@@ -16,7 +16,7 @@ import static com.tfr.order.rule.DiscountRules.*;
  * Created by Erik on 7/4/2017.
  */
 @Configuration
-@ComponentScan(basePackages = {"com.tfr.rulesEngine.example.order"})
+@ComponentScan(basePackages = {"com.tfr.order"})
 public class SpringRuleConfig {
 
     @Bean("TaxRuleEvaluator")
