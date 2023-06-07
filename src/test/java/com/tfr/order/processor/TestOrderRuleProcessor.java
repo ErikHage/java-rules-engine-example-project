@@ -1,27 +1,20 @@
 package com.tfr.order.processor;
 
+import com.tfr.order.RulesEngineExampleApplication;
 import com.tfr.order.model.Item;
 import com.tfr.order.model.Order;
 import com.tfr.order.rule.SpringRuleConfig;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 
 import static com.tfr.order.config.Constants.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- *
- *
- * Created by Erik on 7/3/2017.
- */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = RulesEngineExampleApplication.class)
 @Import(SpringRuleConfig.class)
 public class TestOrderRuleProcessor {
 
@@ -70,17 +63,15 @@ public class TestOrderRuleProcessor {
     }
 
 
-    private Order runTest(Order order, int expectedDiscountNumber, String expectedInScopeForTax,
+    private void runTest(Order order, int expectedDiscountNumber, String expectedInScopeForTax,
                           String expectedContainsTaxableProducts) {
-        processor.process(order);
+        order = processor.process(order);
 
         System.out.println(order);
 
         assertEquals(expectedDiscountNumber, order.getDiscounts().size());
         assertEquals(expectedInScopeForTax, order.getProperty("IN_SCOPE_FOR_TAX"));
         assertEquals(expectedContainsTaxableProducts, order.getProperty("CONTAINS_TAXABLE_PRODUCTS"));
-
-        return order;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.tfr.order.config;
 
-import com.google.common.collect.Sets;
 import com.tfr.order.model.Discount;
 import com.tfr.order.model.Item;
 
@@ -13,11 +12,11 @@ import java.util.Set;
  */
 public interface Constants {
 
-    Set<String> STATES_IN_TAX_SCOPE = Sets.newHashSet(
+    Set<String> STATES_IN_TAX_SCOPE = Set.of(
             "NY","NJ","FL","PA","DE","WA","TX","CA"
     );
 
-    Set<Item.Type> TAXABLE_PRODUCT_TYPES = Sets.newHashSet(
+    Set<Item.Type> TAXABLE_PRODUCT_TYPES = Set.of(
             Item.Type.CLOTHING,
             Item.Type.HOUSEWARES,
             Item.Type.KITCHEN,
